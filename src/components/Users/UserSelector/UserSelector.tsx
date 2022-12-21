@@ -2,7 +2,7 @@ import { FC, useState } from 'react';
 import cn from 'classnames';
 import { User } from '../../../types/User';
 import { SelectedUser } from '../UserSelected/UserSelected';
-import { DropdownButton } from '../DropdownButton/DropdownButton';
+import { DropdownButton } from './DropdownButton/DropdownButton';
 
 interface Props {
   users: User[];

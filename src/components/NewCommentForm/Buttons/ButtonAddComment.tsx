@@ -2,10 +2,10 @@ import { FC } from 'react';
 import cn from 'classnames';
 
 interface Props {
-  isLoading: string
+  isLoading: boolean;
 }
 
-export const ButtonAdd: FC<Props> = (props) => {
+export const ButtonAddComment: FC<Props> = (props) => {
   const { isLoading } = props;
 
   return (

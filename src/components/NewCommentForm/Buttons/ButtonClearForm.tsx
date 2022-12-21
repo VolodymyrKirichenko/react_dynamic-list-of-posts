@@ -7,7 +7,7 @@ interface Props {
   onReset: () => void;
 }
 
-export const ButtonClear: FC<Props> = (props) => {
+export const ButtonClearForm: FC<Props> = (props) => {
   const { isError, isFilled, onReset } = props;
 
   return (
