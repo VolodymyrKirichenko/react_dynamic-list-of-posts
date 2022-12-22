@@ -1,14 +1,10 @@
-import {
-  FC, useCallback, useEffect, useState,
-} from 'react';
+import { FC } from 'react';
 import { NewCommentForm } from '../../NewCommentForm/NewCommentForm';
 import { Post } from '../../../types/Post';
-import { deleteComments, getComments } from '../../../api/comments';
-import { Comment } from '../../../types/Comment';
 import { PostInfo } from './PostInfo/PostInfo';
 import { CommentsToPost } from './CommentsToPost/CommentsToPost';
 import { Loader } from '../../Loader';
-import { ErrorType } from '../../../types/ErrorType';
+import { useDetails } from './hooks/useDetails';
 
 interface Props {
   post: Post;
@@ -17,45 +13,14 @@ interface Props {
 
 export const PostDetails: FC<Props> = (props) => {
   const { post, selectedPostId } = props;
-
-  const [comments, setComments] = useState<Comment[]>([]);
-  const [
+  const {
+    comments,
     isErrorLoading,
-    setIsErrorLoading,
-  ] = useState<ErrorType>(ErrorType.None);
-  const [isVisibleForm, setIsVisibleForm] = useState(false);
-
-  const handleVisibleForm = useCallback(() => {
-    setIsVisibleForm(true);
-  }, []);
-
-  const loadComments = useCallback(async (postId: number | undefined) => {
-    setIsErrorLoading(ErrorType.LoadComments);
-    try {
-      if (post) {
-        const commentsFromServer = await getComments(postId);
-
-        setComments(commentsFromServer);
-        setIsErrorLoading(ErrorType.None);
-      }
-    } catch {
-      setIsErrorLoading(ErrorType.LoadComments);
-    }
-  }, [selectedPostId]);
-
-  const removeComments = useCallback(async (userId: number) => {
-    try {
-      await deleteComments(userId);
-
-      loadComments(selectedPostId);
-    } catch {
-      setIsErrorLoading(ErrorType.LoadComments);
-    }
-  }, [selectedPostId]);
-
-  useEffect(() => {
-    loadComments(selectedPostId);
-  }, [selectedPostId]);
+    isVisibleForm,
+    removeComments,
+    handleVisibleForm,
+    loadComments,
+  } = useDetails({ post, selectedPostId });
 
   return (
     <div className="content" data-cy="PostDetails">
