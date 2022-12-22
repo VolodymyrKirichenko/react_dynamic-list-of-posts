@@ -2,7 +2,6 @@ import { FC } from 'react';
 import 'bulma/bulma.sass';
 import '@fortawesome/fontawesome-free/css/all.css';
 import './App.scss';
-
 import classNames from 'classnames';
 import { PostsList } from '../../Posts/PostList/PostsList';
 import { PostDetails } from '../../Posts/PostDetails/PostDetails';
