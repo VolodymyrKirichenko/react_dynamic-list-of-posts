@@ -6,7 +6,7 @@ interface Props {
   onVisible: (b: boolean) => void;
 }
 
-export const DropdownButton: FC<Props> = memo((props) => {
+export const DropdownSelectButton: FC<Props> = memo((props) => {
   const { selectUser, selectedUserName, onVisible } = props;
 
   return (

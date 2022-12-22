@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { Post } from '../../types/Post';
 import { Loader } from '../Loader';
 import { InputName } from './Inputs/InputName/InputName';
@@ -13,7 +13,7 @@ interface Props {
   post: Post;
 }
 
-export const NewCommentForm: FC<Props> = (props) => {
+export const NewCommentForm: FC<Props> = memo((props) => {
   const { post, onLoad } = props;
   const {
     name,
@@ -70,4 +70,4 @@ export const NewCommentForm: FC<Props> = (props) => {
       </div>
     </form>
   );
-};
+});

@@ -1,11 +1,11 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import cn from 'classnames';
 
 interface Props {
   isLoading: boolean;
 }
 
-export const ButtonAddComment: FC<Props> = (props) => {
+export const ButtonAddComment: FC<Props> = memo((props) => {
   const { isLoading } = props;
 
   return (
@@ -22,4 +22,4 @@ export const ButtonAddComment: FC<Props> = (props) => {
       </button>
     </div>
   );
-};
+});

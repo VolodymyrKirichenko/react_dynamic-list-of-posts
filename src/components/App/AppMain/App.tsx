@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import { PostsList } from '../../Posts/PostList/PostsList';
 import { PostDetails } from '../../Posts/PostDetails/PostDetails';
 import { UserSelector } from '../../Users/UserSelector/UserSelector';
-import { Error } from '../AppError/Error';
+import { AppError } from '../AppError/AppError';
 import { useApp } from '../hooks/useApp';
 
 export const App: FC = () => {
@@ -42,7 +42,7 @@ export const App: FC = () => {
                 )}
 
                 {error && (
-                  <Error error={error} />
+                  <AppError error={error} />
                 )}
 
                 {posts.length === 0 && selectedUser && (

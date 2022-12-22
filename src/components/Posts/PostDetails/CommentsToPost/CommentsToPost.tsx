@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { Comment } from '../../../../types/Comment';
 
 interface Props {
@@ -6,7 +6,7 @@ interface Props {
   onDeleteComment: (userId: number) => void;
 }
 
-export const CommentsToPost: FC<Props> = (props) => {
+export const CommentsToPost: FC<Props> = memo((props) => {
   const {
     comment,
     onDeleteComment,
@@ -44,4 +44,4 @@ export const CommentsToPost: FC<Props> = (props) => {
       </div>
     </article>
   );
-};
+});

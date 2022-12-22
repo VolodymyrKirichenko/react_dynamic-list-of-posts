@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { NewCommentForm } from '../../NewCommentForm/NewCommentForm';
 import { Post } from '../../../types/Post';
 import { PostInfo } from './PostInfo/PostInfo';
@@ -11,7 +11,7 @@ interface Props {
   selectedPostId: number | undefined;
 }
 
-export const PostDetails: FC<Props> = (props) => {
+export const PostDetails: FC<Props> = memo((props) => {
   const { post, selectedPostId } = props;
   const {
     comments,
@@ -72,4 +72,4 @@ export const PostDetails: FC<Props> = (props) => {
       </div>
     </div>
   );
-};
+});

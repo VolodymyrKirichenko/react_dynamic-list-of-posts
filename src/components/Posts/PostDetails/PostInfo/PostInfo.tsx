@@ -1,11 +1,11 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { Post } from '../../../../types/Post';
 
 interface Props {
   post: Post;
 }
 
-export const PostInfo: FC<Props> = (props) => {
+export const PostInfo: FC<Props> = memo((props) => {
   const { post } = props;
 
   return (
@@ -19,4 +19,4 @@ export const PostInfo: FC<Props> = (props) => {
       </p>
     </div>
   );
-};
+});

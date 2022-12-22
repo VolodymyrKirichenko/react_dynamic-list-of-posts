@@ -1,15 +1,17 @@
-import { FC, useState } from 'react';
+import { FC, memo, useState } from 'react';
 import cn from 'classnames';
 import { User } from '../../../types/User';
 import { SelectedUser } from '../UserSelected/UserSelected';
-import { DropdownButton } from './DropdownButton/DropdownButton';
+import {
+  DropdownSelectButton,
+} from './DropdownSelectButton/DropdownSelectButton';
 
 interface Props {
   users: User[];
   onSelect: (user: User) => void;
 }
 
-export const UserSelector: FC<Props> = (props) => {
+export const UserSelector: FC<Props> = memo((props) => {
   const { users, onSelect } = props;
 
   const [selectedUserName, setSelectedUserName] = useState('Choose a user');
@@ -32,7 +34,7 @@ export const UserSelector: FC<Props> = (props) => {
         'is-active': selectUser,
       })}
     >
-      <DropdownButton
+      <DropdownSelectButton
         selectUser={selectUser}
         selectedUserName={selectedUserName}
         onVisible={handleVisible}
@@ -52,4 +54,4 @@ export const UserSelector: FC<Props> = (props) => {
       </div>
     </div>
   );
-};
+});

@@ -1,4 +1,4 @@
-import { ChangeEvent, FC } from 'react';
+import { ChangeEvent, FC, memo } from 'react';
 import cn from 'classnames';
 import { ErrorType } from '../../../../types/ErrorType';
 
@@ -8,7 +8,7 @@ interface Props {
   onChangeEmail: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const InputEmail: FC<Props> = (props) => {
+export const InputEmail: FC<Props> = memo((props) => {
   const { email, emailError, onChangeEmail } = props;
 
   return (
@@ -51,4 +51,4 @@ export const InputEmail: FC<Props> = (props) => {
       )}
     </div>
   );
-};
+});

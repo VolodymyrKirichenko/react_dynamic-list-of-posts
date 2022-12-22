@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import cn from 'classnames';
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
   onReset: () => void;
 }
 
-export const ButtonClearForm: FC<Props> = (props) => {
+export const ButtonClearForm: FC<Props> = memo((props) => {
   const { isError, isFilled, onReset } = props;
 
   return (
@@ -23,4 +23,4 @@ export const ButtonClearForm: FC<Props> = (props) => {
       </button>
     </div>
   );
-};
+});

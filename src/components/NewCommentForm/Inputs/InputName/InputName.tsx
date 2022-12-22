@@ -1,4 +1,4 @@
-import { ChangeEvent, FC } from 'react';
+import { ChangeEvent, FC, memo } from 'react';
 import cn from 'classnames';
 import { ErrorType } from '../../../../types/ErrorType';
 
@@ -8,7 +8,7 @@ interface Props {
   onChangeName: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const InputName: FC<Props> = (props) => {
+export const InputName: FC<Props> = memo((props) => {
   const { nameError, name, onChangeName } = props;
 
   return (
@@ -51,4 +51,4 @@ export const InputName: FC<Props> = (props) => {
       )}
     </div>
   );
-};
+});
