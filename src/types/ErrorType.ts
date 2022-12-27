@@ -3,9 +3,8 @@ export enum ErrorType {
   LoadComments = 'Unable to load a comments',
   LoadPosts = 'Unable to load a posts',
   LoadAddComments = 'Unable to add a comment',
-  LoadingButton = 'Loading', // delete
-  InputNameError = 'Name is required',
-  InputEmailError = 'Email is required',
+  InputNameError = 'The name must contain at least 8 symbols',
+  InputEmailError = 'The form must contain a valid email address',
   InputBodyError = 'Enter some text',
   None = '',
 }

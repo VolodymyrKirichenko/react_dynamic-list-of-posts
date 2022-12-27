@@ -42,14 +42,18 @@ export const UserSelector: FC<Props> = memo((props) => {
 
       <div className="dropdown-menu" id="dropdown-menu" role="menu">
         <div className="dropdown-content">
-          {users.map((user) => (
-            <SelectedUser
-              key={user.id}
-              user={user}
-              onUserSelected={handleUserSelected}
-              selectedUserName={selectedUserName}
-            />
-          ))}
+          {users.map((user) => {
+            const isUserSelected = user.name === selectedUserName;
+
+            return (
+              <SelectedUser
+                key={user.id}
+                user={user}
+                onUserSelected={handleUserSelected}
+                isUserSelected={isUserSelected}
+              />
+            );
+          })}
         </div>
       </div>
     </div>

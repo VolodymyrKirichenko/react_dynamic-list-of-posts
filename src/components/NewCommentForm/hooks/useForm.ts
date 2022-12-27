@@ -25,8 +25,10 @@ export const useForm = (options: Options) => {
   const trimName = name.trim();
   const trimEmail = email.trim();
   const trimBody = body.trim();
-  const isNameError = trimName.length === 0;
-  const isEmailError = trimEmail.length === 0;
+  const isNameError = trimName.length < 8;
+  const isEmailError = trimEmail.length === 0 || (
+    !trimEmail.includes('@') || !trimEmail.includes('.')
+  );
   const isBodyError = trimBody.length === 0;
   const validator = [trimName, trimEmail, trimBody];
   const validatorErrors = [nameError, emailError, bodyError];
@@ -98,7 +100,7 @@ export const useForm = (options: Options) => {
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
 
-    addComment();
+    await addComment();
   }, [name, email, body]);
 
   const resetForm = useCallback(async () => {
