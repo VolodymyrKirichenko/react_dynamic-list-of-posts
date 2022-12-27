@@ -3,13 +3,13 @@ import cn from 'classnames';
 import { ErrorType } from '../../../../types/ErrorType';
 
 interface Props {
-  body: string;
-  bodyError: string;
-  onChangeBody: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+  value: string;
+  error: string;
+  onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 export const InputBody: FC<Props> = memo((props) => {
-  const { body, bodyError, onChangeBody } = props;
+  const { value, error, onChange } = props;
 
   return (
     <div className="field" data-cy="BodyField">
@@ -23,14 +23,14 @@ export const InputBody: FC<Props> = memo((props) => {
           name="body"
           placeholder="Type comment here"
           className={cn('textarea', {
-            'is-danger': bodyError,
+            'is-danger': error,
           })}
-          value={body}
-          onChange={onChangeBody}
+          value={value}
+          onChange={onChange}
         />
       </div>
 
-      {bodyError && (
+      {error && (
         <p className="help is-danger" data-cy="ErrorMessage">
           {ErrorType.InputBodyError}
         </p>

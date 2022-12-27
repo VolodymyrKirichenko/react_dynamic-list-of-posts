@@ -6,11 +6,10 @@ import { deleteComments, getComments } from '../../../../api/comments';
 
 interface Options {
   post: Post;
-  selectedPostId: number | undefined;
 }
 
 export const useDetails = (options: Options) => {
-  const { post, selectedPostId } = options;
+  const { post } = options;
 
   const [comments, setComments] = useState<Comment[]>([]);
   const [
@@ -23,7 +22,7 @@ export const useDetails = (options: Options) => {
     setIsVisibleForm(true);
   }, []);
 
-  const loadComments = useCallback(async (postId: number | undefined) => {
+  const loadComments = useCallback(async (postId: number) => {
     setIsErrorLoading(ErrorType.LoadComments);
     try {
       if (post) {
@@ -35,21 +34,21 @@ export const useDetails = (options: Options) => {
     } catch {
       setIsErrorLoading(ErrorType.LoadComments);
     }
-  }, [selectedPostId]);
+  }, []);
 
   const removeComments = useCallback(async (userId: number) => {
     try {
       await deleteComments(userId);
 
-      loadComments(selectedPostId);
+      loadComments(post?.id);
     } catch {
       setIsErrorLoading(ErrorType.LoadComments);
     }
-  }, [selectedPostId]);
+  }, [post.id]);
 
   useEffect(() => {
-    loadComments(selectedPostId);
-  }, [selectedPostId]);
+    loadComments(post.id);
+  }, [post.id]);
 
   return {
     comments,

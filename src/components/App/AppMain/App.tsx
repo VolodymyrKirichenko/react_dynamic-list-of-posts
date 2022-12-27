@@ -14,6 +14,7 @@ export const App: FC = () => {
     posts,
     users,
     error,
+    isPosts,
     selectedPost,
     selectedUser,
     selectingPost,
@@ -44,13 +45,13 @@ export const App: FC = () => {
                   <AppError error={error} />
                 )}
 
-                {posts.length === 0 && selectedUser && (
+                {!isPosts && selectedUser && (
                   <div className="notification is-warning" data-cy="NoPostsYet">
                     No posts yet
                   </div>
                 )}
 
-                {posts.length !== 0 && (
+                {isPosts && (
                   <PostsList
                     posts={posts}
                     onPostSelected={setSelectedPost}
@@ -64,16 +65,13 @@ export const App: FC = () => {
           <div
             data-cy="Sidebar"
             className={classNames(
-              'tile', 'is-parent', 'is-8-desktop', 'Sidebar',
-              { 'Sidebar--open': selectedPost },
+              'tile', 'is-parent', 'is-8-desktop', 'sidebar',
+              { 'sidebar--open': selectedPost },
             )}
           >
             <div className="tile is-child box is-success ">
               {selectedPost && (
-                <PostDetails
-                  post={selectedPost}
-                  selectedPostId={selectedPost?.id}
-                />
+                <PostDetails post={selectedPost} />
               )}
             </div>
           </div>

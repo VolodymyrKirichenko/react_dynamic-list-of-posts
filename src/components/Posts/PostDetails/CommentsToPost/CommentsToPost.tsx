@@ -16,7 +16,6 @@ export const CommentsToPost: FC<Props> = memo((props) => {
     <article
       className="message is-small"
       data-cy="Comment"
-      key={comment.id}
     >
       <div className="message-header">
         <a
@@ -36,6 +35,7 @@ export const CommentsToPost: FC<Props> = memo((props) => {
           delete button
         </button>
       </div>
+
       <div
         className="message-body"
         data-cy="CommentBody"

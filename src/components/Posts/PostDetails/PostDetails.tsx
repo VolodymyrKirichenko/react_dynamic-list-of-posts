@@ -8,11 +8,10 @@ import { useDetails } from './hooks/useDetails';
 
 interface Props {
   post: Post;
-  selectedPostId: number | undefined;
 }
 
 export const PostDetails: FC<Props> = memo((props) => {
-  const { post, selectedPostId } = props;
+  const { post } = props;
   const {
     comments,
     isErrorLoading,
@@ -20,7 +19,7 @@ export const PostDetails: FC<Props> = memo((props) => {
     removeComments,
     handleVisibleForm,
     loadComments,
-  } = useDetails({ post, selectedPostId });
+  } = useDetails({ post });
 
   return (
     <div className="content" data-cy="PostDetails">
@@ -48,6 +47,7 @@ export const PostDetails: FC<Props> = memo((props) => {
 
           {comments.map(comment => (
             <CommentsToPost
+              key={comment.id}
               comment={comment}
               onDeleteComment={removeComments}
             />

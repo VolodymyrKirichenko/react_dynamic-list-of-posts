@@ -25,6 +25,9 @@ export const useForm = (options: Options) => {
   const trimName = name.trim();
   const trimEmail = email.trim();
   const trimBody = body.trim();
+  const isNameError = trimName.length === 0;
+  const isEmailError = trimEmail.length === 0;
+  const isBodyError = trimBody.length === 0;
   const validator = [trimName, trimEmail, trimBody];
   const validatorErrors = [nameError, emailError, bodyError];
   const isFilled = validator.some(el => el.length > 0);
@@ -52,21 +55,19 @@ export const useForm = (options: Options) => {
   }, []);
 
   const addComment = useCallback(async () => {
-    if (trimName.length === 0) {
+    if (isNameError) {
       setNameError(ErrorType.InputNameError);
     }
 
-    if (trimEmail.length === 0) {
+    if (isEmailError) {
       setEmailError(ErrorType.InputEmailError);
     }
 
-    if (trimBody.length === 0) {
+    if (isBodyError) {
       setBodyError(ErrorType.InputBodyError);
     }
 
-    if (trimName.length === 0
-      || trimEmail.length === 0
-      || trimBody.length === 0) {
+    if (isNameError || isEmailError || isBodyError) {
       return;
     }
 
@@ -81,7 +82,9 @@ export const useForm = (options: Options) => {
       setIsLoading(true);
 
       await createComments(newComment);
+
       onLoad(newComment.postId);
+
       setName('');
       setEmail('');
       setBody('');
@@ -102,6 +105,7 @@ export const useForm = (options: Options) => {
     setName('');
     setEmail('');
     setBody('');
+
     setNameError(ErrorType.None);
     setBodyError(ErrorType.None);
     setEmailError(ErrorType.None);

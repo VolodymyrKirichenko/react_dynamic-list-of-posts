@@ -25,13 +25,18 @@ export const PostsList: FC<Props> = memo((props) => {
         </thead>
 
         <tbody>
-          {posts.map(post => (
-            <PostCard
-              post={post}
-              onPostSelected={onPostSelected}
-              selectedPostId={selectedPostId}
-            />
-          ))}
+          {posts.map(post => {
+            const isPostSelected = post.id === selectedPostId;
+
+            return (
+              <PostCard
+                key={post.id}
+                post={post}
+                onPostSelected={onPostSelected}
+                isPostSelected={isPostSelected}
+              />
+            );
+          })}
         </tbody>
       </table>
     </div>

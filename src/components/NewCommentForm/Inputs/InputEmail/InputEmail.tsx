@@ -3,13 +3,13 @@ import cn from 'classnames';
 import { ErrorType } from '../../../../types/ErrorType';
 
 interface Props {
-  email: string;
-  emailError: string;
-  onChangeEmail: (e: ChangeEvent<HTMLInputElement>) => void;
+  value: string;
+  error: string;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const InputEmail: FC<Props> = memo((props) => {
-  const { email, emailError, onChangeEmail } = props;
+  const { value, error, onChange } = props;
 
   return (
     <div className="field" data-cy="EmailField">
@@ -24,17 +24,17 @@ export const InputEmail: FC<Props> = memo((props) => {
           id="comment-author-email"
           placeholder="email@test.com"
           className={cn('input', {
-            'is-danger': emailError,
+            'is-danger': error,
           })}
-          value={email}
-          onChange={onChangeEmail}
+          value={value}
+          onChange={onChange}
         />
 
         <span className="icon is-small is-left">
           <i className="fas fa-envelope" />
         </span>
 
-        {emailError && (
+        {error && (
           <span
             className="icon is-small is-right has-text-danger"
             data-cy="ErrorIcon"
@@ -44,7 +44,7 @@ export const InputEmail: FC<Props> = memo((props) => {
         )}
       </div>
 
-      {emailError && (
+      {error && (
         <p className="help is-danger" data-cy="ErrorMessage">
           {ErrorType.InputEmailError}
         </p>

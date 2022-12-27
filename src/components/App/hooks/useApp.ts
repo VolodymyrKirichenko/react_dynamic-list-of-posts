@@ -12,6 +12,8 @@ export const useApp = () => {
   const [selectedPost, setSelectedPost] = useState<Post | null>(null);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
 
+  const isPosts = posts.length !== 0;
+
   const loadUsers = useCallback(async () => {
     try {
       const usersFromServer = await getUsers();
@@ -52,13 +54,11 @@ export const useApp = () => {
 
   return {
     posts,
-    setPosts,
     users,
-    setUsers,
     error,
-    setError,
-    selectedPost,
+    isPosts,
     selectedUser,
+    selectedPost,
     selectingPost,
     setSelectedPost,
   };

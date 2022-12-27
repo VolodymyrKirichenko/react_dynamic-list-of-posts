@@ -12,11 +12,9 @@ export const ButtonAddComment: FC<Props> = memo((props) => {
     <div className="control">
       <button
         type="submit"
-        className={cn(
-          'button', 'is-link', {
-            'is-loading': isLoading,
-          },
-        )}
+        className={cn('button', 'is-link', {
+          'is-loading': isLoading,
+        })}
       >
         Add
       </button>

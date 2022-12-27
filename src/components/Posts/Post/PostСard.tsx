@@ -5,11 +5,11 @@ import { Post } from '../../../types/Post';
 interface Props {
   post: Post;
   onPostSelected: (post: Post | null) => void,
-  selectedPostId: number | undefined;
+  isPostSelected: boolean;
 }
 
 export const PostCard: FC<Props> = memo((props) => {
-  const { post, selectedPostId, onPostSelected } = props;
+  const { post, isPostSelected, onPostSelected } = props;
 
   return (
     <tr data-cy="Post">
@@ -24,13 +24,13 @@ export const PostCard: FC<Props> = memo((props) => {
           type="button"
           data-cy="PostButton"
           className={cn('button', 'is-link', {
-            'is-light': selectedPostId !== post.id,
+            'is-light': !isPostSelected,
           })}
           onClick={() => onPostSelected(
-            selectedPostId === post.id ? null : post,
+            isPostSelected ? null : post,
           )}
         >
-          {selectedPostId === post.id ? 'Close' : 'Open'}
+          {isPostSelected ? 'Close' : 'Open'}
         </button>
       </td>
     </tr>

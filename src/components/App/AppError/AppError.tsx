@@ -10,7 +10,7 @@ export const AppError: FC<Props> = memo((props) => {
   const { error } = props;
 
   return (
-    <>
+    <div>
       <Loader />
 
       <div
@@ -19,6 +19,6 @@ export const AppError: FC<Props> = memo((props) => {
       >
         {error}
       </div>
-    </>
+    </div>
   );
 });

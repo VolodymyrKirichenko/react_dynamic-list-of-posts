@@ -36,32 +36,33 @@ export const NewCommentForm: FC<Props> = memo((props) => {
   return (
     <form
       data-cy="NewCommentForm"
-      onSubmit={(e) => handleSubmit(e)}
+      onSubmit={handleSubmit}
     >
       {errorLoading && (
         <Loader />
       )}
 
       <InputName
-        name={name}
-        nameError={nameError}
-        onChangeName={handleChangeName}
+        value={name}
+        error={nameError}
+        onChange={handleChangeName}
       />
 
       <InputEmail
-        email={email}
-        emailError={emailError}
-        onChangeEmail={handleChangeEmail}
+        value={email}
+        error={emailError}
+        onChange={handleChangeEmail}
       />
 
       <InputBody
-        body={body}
-        bodyError={bodyError}
-        onChangeBody={handleChangeBody}
+        value={body}
+        error={bodyError}
+        onChange={handleChangeBody}
       />
 
       <div className="field is-grouped">
         <ButtonAddComment isLoading={isLoading} />
+
         <ButtonClearForm
           isError={isError}
           isFilled={isFilled}
