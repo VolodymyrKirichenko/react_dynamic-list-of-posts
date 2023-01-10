@@ -4,7 +4,7 @@ import { ErrorType } from '../../../../types/ErrorType';
 
 interface Props {
   value: string;
-  error: string;
+  error: ErrorType;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -46,7 +46,7 @@ export const InputEmail: FC<Props> = memo((props) => {
 
       {error && (
         <p className="help is-danger" data-cy="ErrorMessage">
-          {ErrorType.InputEmailError}
+          {error}
         </p>
       )}
     </div>
