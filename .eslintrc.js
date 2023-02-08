@@ -8,5 +8,8 @@ module.exports = {
     'jsx-a11y/label-has-associated-control': ["error", {
       assert: "either",
     }],
+    'operator-linebreak': ['error', 'before'],
+    'jsx-a11y/control-has-associated-label': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
   },
 };
